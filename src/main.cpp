@@ -10,7 +10,7 @@
  * All rights reserved.
  */
 #include <Arduino.h>
-#include "U8glib.h"
+#include "U8g2lib.h"
 
 /* Create an instance for the SSD1306 OLED display in SPI mode
  * connection scheme:
