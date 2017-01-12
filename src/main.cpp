@@ -28,8 +28,8 @@ void loop() {
 }
 
 void draw(void) {
-  int x_pos = map_input(POT_LEFT, 0, 127);
-  int y_pos = map_input(POT_RIGHT, 0, 63);
+  int x_pos = map_input(POT_LEFT, 0, ug82.getDisplayWidth()-1);
+  int y_pos = map_input(POT_RIGHT, 0, u8g2.getDisplayHeight()-1);
   u8g2.drawPixel(x_pos,y_pos);
   u8g2.sendBuffer();
 }
