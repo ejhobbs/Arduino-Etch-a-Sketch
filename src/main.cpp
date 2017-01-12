@@ -20,7 +20,14 @@
  *   DC=A0=Pin 9
  *   Reset=Pin 10
  */
+
+
 U8GLIB_SSD1306_128X64 u8g(12, 11, 8, 9, 10);
+const int POT_LEFT = A5;
+const int POT_RIGHT = A4;
+
+void draw(void);
+int map_input(int, int, int);
 
 void setup()
 {
@@ -30,19 +37,17 @@ void setup()
 void loop()
 {
   u8g.firstPage();
-
-  /* Keep looping until finished drawing screen */
-  do
-  {
-    int steps = 16;
-    int dx = 128/steps;
-    int dy = 64/steps;
-    int y = 0;
-    for(int x=0; x<128; x+=dx) {
-        u8g.drawLine(x, 0, 127, y);
-        u8g.drawLine(127-x, 63, 0, 63-y);
-       y+=dy;
-    }
-
+  do {
+    draw();
   } while(u8g.nextPage());
+}
+
+void draw(void) {
+  int x_pos = map_input(POT_LEFT, 0, 127);
+  int y_pos = map_input(POT_RIGHT, 0, 63);
+  u8g.drawPixel(x_pos,y_pos);
+}
+
+int map_input(int POT, int min, int max){
+  return map(analogRead(POT), 0, 1024, min, max);
 }
