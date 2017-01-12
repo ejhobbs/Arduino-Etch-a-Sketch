@@ -11,7 +11,7 @@
  *   DC=A0=Pin 9
  *   Reset=Pin 10
  */
-U8G2_SH1106_128X64_NONAME_1_4W_SW_SPI u8g2(U8G2_R0, 12, 11, 8, 9, 10);
+U8G2_SH1106_128X64_NONAME_F_4W_SW_SPI u8g2(U8G2_R0, 12, 11, 8, 9, 10);
 
 const int POT_LEFT = A5;
 const int POT_RIGHT = A4;
@@ -19,25 +19,21 @@ const int POT_RIGHT = A4;
 void draw(void);
 int map_input(int, int, int);
 
-void setup()
-{
+void setup() {
   u8g2.begin();
 }
 
-void loop()
-{
-  u8g2.firstPage();
-  do {
-    draw();
-  } while(u8g2.nextPage());
+void loop() {
+  draw();
 }
 
 void draw(void) {
   int x_pos = map_input(POT_LEFT, 0, 127);
   int y_pos = map_input(POT_RIGHT, 0, 63);
   u8g2.drawPixel(x_pos,y_pos);
+  u8g2.sendBuffer();
 }
 
-int map_input(int POT, int min, int max){
+int map_input(int POT, int min, int max) {
   return map(analogRead(POT), 0, 1024, min, max);
 }
