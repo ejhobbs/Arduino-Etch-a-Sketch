@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <SPI.h>
 #include "U8g2lib.h"
 
 /* Create an instance for the SSD1306 OLED display in SPI mode
@@ -9,7 +10,7 @@
  *   DC=A0=Pin 9
  *   Reset=Pin 10
  */
-U8GLIB_SH1106_128X64_NONAME_1_4W_SW_SPI u8g2(U8G2_R0, 12, 11, 8, 9, 10);
+U8G2_SH1106_128X64_NONAME_1_4W_SW_SPI u8g2(U8G2_R0, 12, 11, 8, 9, 10);
 
 const int POT_LEFT = A5;
 const int POT_RIGHT = A4;
