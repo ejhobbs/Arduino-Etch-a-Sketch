@@ -31,7 +31,7 @@ int map_input(int, int, int);
 
 void setup()
 {
-  /* nothing to do here */
+  u8g.begin();
 }
 
 void loop()
