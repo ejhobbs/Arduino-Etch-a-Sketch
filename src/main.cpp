@@ -25,7 +25,7 @@ void setup() {
 
 void loop() {
   draw();
-  delay(500);
+  delay(1);
 }
 
 void draw(void) {
